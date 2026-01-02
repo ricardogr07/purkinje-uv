@@ -7,7 +7,12 @@
   {
     "version": "v0.3.0",
     "name": "v0.3.0",
-    "url": "/purkinje-uv/v0.3.0/",
+    "url": "/purkinje-uv/v0.3.0/"
+  },
+  {
+    "version": "v0.4.0",
+    "name": "v0.4.0",
+    "url": "/purkinje-uv/v0.4.0/",
     "preferred": true
   }
 ]
