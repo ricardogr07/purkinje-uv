@@ -15,7 +15,7 @@ from typing import Any, Dict, List, Mapping, Optional
 logger = logging.getLogger(__name__)
 
 
-@dataclass(slots=True, frozen=True)
+@dataclass(slots=True, frozen=False)
 class FractalTreeParameters:
     """Holds settings for generating a fractal tree structure.
 
@@ -62,6 +62,8 @@ class FractalTreeParameters:
     # Fascicles data (lists intentionally left mutable; use default_factory)
     fascicles_angles: List[float] = field(default_factory=list)
     fascicles_length: List[float] = field(default_factory=list)
+
+    save: bool = False
 
     def __post_init__(self) -> None:
         # --- Type checks for indices ---
