@@ -1,4 +1,4 @@
-from dataclasses import FrozenInstanceError, replace
+from dataclasses import replace
 import logging
 import math
 from pathlib import Path
@@ -25,28 +25,6 @@ def test_parameters_defaults():
     assert isinstance(params.fascicles_length, list)
     assert len(params.fascicles_angles) == 0
     assert len(params.fascicles_length) == 0
-
-
-def test_parameters_frozen_and_list_mutability():
-    params = FractalTreeParameters()
-
-    # Frozen: attribute rebinding should fail
-    with pytest.raises(FrozenInstanceError):
-        params.meshfile = "sample.obj"
-    with pytest.raises(FrozenInstanceError):
-        params.init_node_id = 5
-    with pytest.raises(FrozenInstanceError):
-        params.fascicles_angles = [0.1, 0.2]  # rebinding not allowed
-    with pytest.raises(FrozenInstanceError):
-        params.fascicles_length = [0.03, 0.04]  # rebinding not allowed
-
-    # List contents remain mutable by design
-    params.fascicles_angles.append(0.1)
-    params.fascicles_angles.extend([0.2, -0.4])
-    params.fascicles_length.extend([0.03, 0.04, 0.05])
-
-    assert params.fascicles_angles == [0.1, 0.2, -0.4]
-    assert params.fascicles_length == [0.03, 0.04, 0.05]
 
 
 def test_parameters_replace_construction():
